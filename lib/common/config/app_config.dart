@@ -10,20 +10,24 @@ class AppConfig {
 
   final String xClientName;
 
+  final String xRapidKey;
+
   /// Constructs an instance of the config
   AppConfig({
     this.showDebugFlag = false,
-  })  : appName = _DevConstants.appName,
+  })
+      : appName = _DevConstants.appName,
         host = _DevConstants.host,
-        xClientName = _DevConstants.xClientName;
+        xClientName = _DevConstants.xClientName,
+        xRapidKey = _DevConstants.xRapidKey;
+
 }
 
 class _DevConstants {
   static const appName = 'Songs Lyrics List';
   static const host = 'https://genius.p.rapidapi.com';
   static const xClientName = 'crosschannelapp';
-  static const headers = {
-    'x-rapidapi-host': 'genius.p.rapidapi.com',
-    'x-rapidapi-key': 'BhQafsu6a4mshfsvTrCgAMdrEG2yp13hb9sjs'
-  };
+  static const xRapidKey = 'BhQafsu6a4mshfsvTrCgAMdrEG2yp13hb9sjsnlt2WQv0SrwO5';
 }
+
+
