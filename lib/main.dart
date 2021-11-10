@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:songs/common/config/app_config.dart';
 import 'package:songs/pages/songs_list_page.dart';
+import 'package:songs/services/web_service.dart';
+import 'package:songs/view_models/song_list_view_model.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,19 +25,19 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: _appConfig.showDebugFlag,
-      /* home: MultiProvider(
+      home: MultiProvider(
         providers: appProvidersSingleton!,
         child: SongsListPage(),
-      ),*/
-      home: SongsListPage(),
+      ),
     );
   }
 
   static void _getAppProvidersSingleton() {
-    /*  final WebService webService = WebService(_appConfig);
+    final WebService webService = WebService(_appConfig);
     appProvidersSingleton = [
       Provider<WebService>.value(value: webService),
-      ChangeNotifierProvider(create: (context) => MerchantListViewModel(webService)),
-    ];*/
+      ChangeNotifierProvider(
+          create: (context) => SongListViewModel(webService)),
+    ];
   }
 }
