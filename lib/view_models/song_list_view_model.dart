@@ -25,7 +25,7 @@ class SongListViewModel extends ChangeNotifier {
     }
   }
 
-  SongViewModel createMerchantViewModel(Song song) {
+  SongViewModel createSongViewModel(Song song) {
     return SongViewModel(song: song);
   }
 

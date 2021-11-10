@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:songs/models/song.dart';
+import 'package:songs/pages/lyrics_page.dart';
 import 'package:songs/view_models/song_list_view_model.dart';
+import 'package:songs/view_models/song_view_model.dart';
 
 class SongsListPage extends StatefulWidget {
   @override
@@ -38,29 +40,36 @@ class _SongsListPageState extends State<SongsListPage> {
                         AsyncSnapshot<List<Song>> snapshot) {
                       if (snapshot.hasData) {
                         return ListView.separated(
-                          separatorBuilder: (context, index) => const Divider(
+                          separatorBuilder: (context, index) =>
+                          const Divider(
                             color: Colors.black,
                           ),
                           itemCount:
-                              snapshot.hasData ? snapshot.data!.length : 0,
+                          snapshot.hasData ? snapshot.data!.length : 0,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                                 child: ListTile(
                                   leading: snapshot.data![index]
-                                          .songArtThumbnailUrl!.isEmpty
+                                      .songArtThumbnailUrl!.isEmpty
                                       ? Image.network(
-                                          'http://placekitten.com/200/300')
+                                      'http://placekitten.com/200/300')
                                       : Image.network(snapshot
-                                          .data![index].songArtThumbnailUrl!),
+                                      .data![index].songArtThumbnailUrl!),
                                   title: Text(snapshot.data![index].fullTitle
                                       .toString()),
                                 ),
-                                onTap: () => {
-                                      /*_merchantViewModel = _listViewModel
-                    .createMerchantViewModel(
-                snapshot.data![index]),*/
-                                      /*    _listViewModel.showDetailPage = true,*/
-                                    });
+                                onTap: () =>
+                                {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          LyricsPage(
+                                              song:_listViewModel.createSongViewModel(snapshot.data![index]),
+                                          ),
+                                    ),
+                                  ),
+                                });
                           },
                         );
                       } else if (snapshot.hasError) {
