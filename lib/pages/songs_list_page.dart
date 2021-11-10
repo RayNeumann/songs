@@ -1,10 +1,8 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:songs/common/config/app_config.dart';
+import 'package:provider/provider.dart';
 import 'package:songs/models/song.dart';
+import 'package:songs/view_models/song_list_view_model.dart';
 
 class SongsListPage extends StatefulWidget {
   @override
@@ -13,19 +11,20 @@ class SongsListPage extends StatefulWidget {
 
 class _SongsListPageState extends State<SongsListPage> {
   Future<List<Song>>? futureSongs;
+  late SongListViewModel _listViewModel;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // _listViewModel = Provider.of<MerchantListViewModel>(context);
-    futureSongs = fetchSongs();
+    _listViewModel = Provider.of<SongListViewModel>(context);
+    futureSongs = _listViewModel.fetchSongs();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Merchants ListView'),
+        title: const Text('Songs ListView'),
       ),
       body: Column(
         children: [
@@ -77,36 +76,5 @@ class _SongsListPageState extends State<SongsListPage> {
         ],
       ),
     );
-  }
-
-  String? host;
-  var url;
-  String? xClientname;
-  Map<String, String>? requestHeaders;
-
-  Future<List<Song>>? fetchSongs() async {
-    host = AppConfig().host;
-    xClientname = AppConfig().xClientName;
-
-    requestHeaders = {
-      'x-rapidapi-key': AppConfig().xRapidKey,
-    };
-
-    String _url = '$host/artists/16775/songs';
-    try {
-      final response = await http.get(Uri.parse(_url), headers: requestHeaders);
-      if (response.statusCode == 200) {
-        var jsonResponse = json.decode(response.body);
-
-        var _songsList = List<Song>.from(jsonResponse['response']['songs']
-            .map((song) => Song.fromMap(song)));
-        return _songsList;
-      } else {
-        throw Exception('Unexpected error occurred!');
-      }
-    } catch (e) {
-      //print(e);
-      throw Exception("network request failed, http statuscode: $e");
-    }
   }
 }
