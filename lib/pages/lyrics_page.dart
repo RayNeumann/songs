@@ -13,6 +13,8 @@ class LyricsPage extends StatefulWidget {
 }
 
 class _LyricsPageState extends State<LyricsPage> {
+  bool _isPageLoading = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +46,24 @@ class _LyricsPageState extends State<LyricsPage> {
               height: 30.0,
             ),
             Expanded(
-              child: WebView(
-                initialUrl: widget.song!.lyricsUrl,
+              child: Stack(
+                children: [
+                  Expanded(
+                    child: WebView(
+                      initialUrl: widget.song!.lyricsUrl,
+                      onPageFinished: (finish) {
+                        setState(() {
+                          _isPageLoading = false;
+                        });
+                      },
+                    ),
+                  ),
+                  _isPageLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : Stack(),
+                ],
               ),
             ),
           ],
