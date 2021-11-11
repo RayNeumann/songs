@@ -57,8 +57,3 @@ for more info on build modes, please see (https://flutter.dev/docs/testing/build
 ## State Management
 
 This project uses [Provider](https://pub.dev/packages/provider) as a global state management solution.
-
-## Extension Methods
-
-Under folder lib/common/utils/extensions can be found the extensions files that hold the various extension methods.
- 
