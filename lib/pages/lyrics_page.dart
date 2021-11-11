@@ -40,6 +40,7 @@ class _LyricsPageState extends State<LyricsPage> {
               child: Text(
                 widget.song!.fullTitle!,
                 style: const TextStyle(fontSize: 25.0),
+                textAlign: TextAlign.center,
               ),
             ),
             const SizedBox(

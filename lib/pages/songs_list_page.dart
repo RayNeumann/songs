@@ -26,7 +26,8 @@ class _SongsListPageState extends State<SongsListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Songs ListView'),
+        title: const Text('Songs List View'),
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -40,36 +41,35 @@ class _SongsListPageState extends State<SongsListPage> {
                         AsyncSnapshot<List<Song>> snapshot) {
                       if (snapshot.hasData) {
                         return ListView.separated(
-                          separatorBuilder: (context, index) =>
-                          const Divider(
+                          separatorBuilder: (context, index) => const Divider(
                             color: Colors.black,
                           ),
                           itemCount:
-                          snapshot.hasData ? snapshot.data!.length : 0,
+                              snapshot.hasData ? snapshot.data!.length : 0,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                                 child: ListTile(
                                   leading: snapshot.data![index]
-                                      .songArtThumbnailUrl!.isEmpty
+                                          .songArtThumbnailUrl!.isEmpty
                                       ? Image.network(
-                                      'http://placekitten.com/200/300')
+                                          'http://placekitten.com/200/300')
                                       : Image.network(snapshot
-                                      .data![index].songArtThumbnailUrl!),
+                                          .data![index].songArtThumbnailUrl!),
                                   title: Text(snapshot.data![index].fullTitle
                                       .toString()),
                                 ),
-                                onTap: () =>
-                                {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          LyricsPage(
-                                              song:_listViewModel.createSongViewModel(snapshot.data![index]),
+                                onTap: () => {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => LyricsPage(
+                                            song: _listViewModel
+                                                .createSongViewModel(
+                                                    snapshot.data![index]),
                                           ),
-                                    ),
-                                  ),
-                                });
+                                        ),
+                                      ),
+                                    });
                           },
                         );
                       } else if (snapshot.hasError) {
