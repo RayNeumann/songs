@@ -77,7 +77,7 @@ class Song {
       fullTitle: map['full_title'] as String,
       songArtThumbnailUrl: map['song_art_image_thumbnail_url'] as String,
       songArtImageUrl: map['song_art_image_url'] as String,
-      lyricsUrl: map['path'] as String,
+      lyricsUrl: map['url'] as String,
     );
   }
 
