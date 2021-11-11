@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:songs/view_models/song_view_model.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class LyricsPage extends StatefulWidget {
   SongViewModel? song;
@@ -42,8 +43,10 @@ class _LyricsPageState extends State<LyricsPage> {
             const SizedBox(
               height: 30.0,
             ),
-            Container(
-              child: Text('lyrics here'),
+            Expanded(
+              child: WebView(
+                initialUrl: widget.song!.lyricsUrl,
+              ),
             ),
           ],
         ),
