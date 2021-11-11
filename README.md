@@ -3,7 +3,7 @@
 A cross-platform App that queries songs, displays them in a list and allows a detailed view of each fetched song item.
 To ensure the list elements in the ui are created on demand, the List is displayed using a
 ListView.builder (https://api.flutter.dev/flutter/widgets/ListView/ListView.builder.html)
-Pressing on an item will show a page with song's lyrics.
+Pressing on an item will show a page with song's lyrics in a webview.
 
 ## Version
 
