@@ -1,7 +1,12 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+
+// Project imports:
 import 'package:songs/common/config/app_config.dart';
 import 'package:songs/pages/songs_list_page.dart';
 import 'package:songs/services/web_service.dart';

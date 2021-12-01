@@ -1,7 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
-import 'package:songs/view_models/song_view_model.dart';
+// Package imports:
 import 'package:webview_flutter/webview_flutter.dart';
+
+// Project imports:
+import 'package:songs/view_models/song_view_model.dart';
 
 class LyricsPage extends StatefulWidget {
   SongViewModel? song;

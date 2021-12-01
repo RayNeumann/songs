@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:songs/models/song.dart';
 import 'package:songs/pages/lyrics_page.dart';
 import 'package:songs/view_models/song_list_view_model.dart';
