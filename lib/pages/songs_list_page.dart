@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
+import 'package:songs/common/consts/song_list_view_text_constants.dart';
 
 // Project imports:
 import 'package:songs/models/song.dart';
@@ -31,7 +32,7 @@ class _SongsListPageState extends State<SongsListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Songs List View'),
+        title: const Text(SongListViewTextConstants.title),
         centerTitle: true,
       ),
       body: Column(
