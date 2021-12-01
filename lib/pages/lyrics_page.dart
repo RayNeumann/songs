@@ -51,7 +51,8 @@ class _LyricsPageState extends State<LyricsPage> {
                 children: [
                   Expanded(
                     child: WebView(
-                      initialUrl: widget.song!.lyricsUrl,
+                      initialUrl:
+                          widget.song != null ? widget.song!.lyricsUrl : '',
                       onPageFinished: (finish) {
                         setState(() {
                           _isPageLoading = false;

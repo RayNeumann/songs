@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:songs/models/song.dart';
+import 'package:songs/pages/lyrics_page.dart';
 import 'package:songs/services/web_service.dart';
 import 'package:songs/view_models/song_view_model.dart';
 
@@ -29,11 +31,25 @@ class SongListViewModel extends ChangeNotifier {
     return SongViewModel(song: song);
   }
 
+  void onTap(BuildContext context, Song song) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            LyricsPage(
+              song: createSongViewModel(
+                  song!),
+            ),
+      ),
+    );
+  }
+
   int? get maxNumberOfMerchants => _maxNumberOfMerchants;
 
   bool get showDetailPage => _showDetailPage;
 
-  set showDetailPage(bool isDetailPageShown) => {
+  set showDetailPage(bool isDetailPageShown) =>
+      {
         _showDetailPage = isDetailPageShown,
         notifyListeners(),
       };

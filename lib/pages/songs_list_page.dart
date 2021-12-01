@@ -59,16 +59,11 @@ class _SongsListPageState extends State<SongsListPage> {
                                       .toString()),
                                 ),
                                 onTap: () => {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => LyricsPage(
-                                            song: _listViewModel
-                                                .createSongViewModel(
-                                                    snapshot.data![index]),
-                                          ),
-                                        ),
-                                      ),
+                                      if (snapshot.hasData)
+                                        {
+                                          _listViewModel.onTap(
+                                              context, snapshot.data![index]),
+                                        }
                                     });
                           },
                         );
